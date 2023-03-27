@@ -17,9 +17,9 @@ Superheroes is a backend application that hold models, controllers with actions 
 
 5.  Run `rails s` in your terminal and using various endpoints you are able to get data in json format.
 
-## Link to live site
+## ERD diagram
+!/ERD.png
 
-                    `https://super-herow.herokuapp.com/heroes`
     
 
 ##  Copyright and License Information
