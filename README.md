@@ -8,11 +8,17 @@ Superheroes is a backend application that hold models, controllers with actions 
 ## Project Setup Instructions
 
 1.Clone this repository to your local machine using git clone https://github.com/BONIFACE-DEV/superheroes
+
 2. cd into the project directory
+
 3. Run bundle install command to install gem files
+
 4. Run rails db:migrate command to create the database tables
+
 5. Run rails db:seed command to populate the database with sample data
+
 6. Start the server with rails server command using rails s
+
 7 Use Postman or insomnia to make requests to the API endpoints
 
 ## ERD diagram
