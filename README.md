@@ -7,7 +7,7 @@ Superheroes is a backend application that hold models, controllers with actions 
 
 ## Project Setup Instructions
 
-1.Clone this repository to your local machine using git clone https://github.com/BONIFACE-DEV/superheroes
+1. Clone this repository to your local machine using git clone https://github.com/BONIFACE-DEV/superheroes
 
 2. cd into the project directory
 
@@ -19,7 +19,7 @@ Superheroes is a backend application that hold models, controllers with actions 
 
 6. Start the server with rails server command using rails s
 
-7 Use Postman or insomnia to make requests to the API endpoints
+7.  Use Postman or insomnia to make requests to the API endpoints
 
 ## ERD diagram
 ![alt text](/ERD.png)
