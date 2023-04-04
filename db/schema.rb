@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_08_063835) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_071150) do
   create_table "hero_powers", force: :cascade do |t|
-    t.integer "hero_id"
-    t.integer "power_id"
     t.string "strength"
+    t.integer "hero_id", null: false
+    t.integer "power_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_hero_powers_on_hero_id"
+    t.index ["power_id"], name: "index_hero_powers_on_power_id"
   end
 
   create_table "heros", force: :cascade do |t|
     t.string "name"
     t.string "super_name"
-    t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,4 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_063835) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "hero_powers", "heros"
+  add_foreign_key "hero_powers", "powers"
 end
