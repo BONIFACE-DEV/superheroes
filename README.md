@@ -48,7 +48,7 @@ And the ERD Diagram will look like this:
 
 
 ## ERD diagram
-![alt text](/ERD.png)
+![alt text](/erd.png)
 
     
 ##  license Information
