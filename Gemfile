@@ -1,13 +1,18 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.0.2 "
+
+gem 'sqlite3', '~> 1.6', '>= 1.6.1'
+
+gem 'bcrypt', '~> 3.1', '>= 3.1.18'
+
+gem 'faker', '~> 3.1', '>= 3.1.1'
+
+gem 'active_model_serializers'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
-
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -27,5 +32,9 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-gem 'active_model_serializers'
+
+group :production do
+  # Use postgresql as the database for Active Record
+  gem 'pg', '~> 1.4', '>= 1.4.6'
+end
 

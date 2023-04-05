@@ -2,10 +2,10 @@
 
 one:
   strength: MyString
-  hero: one
   power: one
+  hero: one
 
 two:
   strength: MyString
-  hero: two
   power: two
+  hero: two

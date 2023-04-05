@@ -5,25 +5,42 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "Start seeding"
-Hero.create([
-  { name: "Steve Rogers", super_name: "Captain America" },
-  { name: "T'Challa", super_name: "Black Panther" },
-  { name: "Carol Danvers", super_name: "Captain Marvel" }
 
-])
+puts "Creating heroes..."
 
-Power.create([
-  
-  { name: "Super Strength", description: "Grants incredible physical power" },
-  { name: "Flight", description: "Allows the user to fly through the air" },
-  { name: "Invisibility", description: "Enables the user to become invisible" }
-])
+# Create 10 Heroes
+10.times do
+    # name and super_name
+    name = Faker::Games::Heroes.name
+    super_name = Faker::Games::Heroes.specialty
+    Hero.create(name: name, super_name: super_name)
+end
 
-# Then, create some hero_powers associations with valid strength values
-HeroPower.create([
-  { strength: "Strong", hero_id: 1, power_id: 1 },
-  { strength: "Weak", hero_id: 1, power_id: 2 },
-  { strength: "Average", hero_id: 2, power_id: 2 },
-])
-puts "Done seeding"
+puts "Done creating heroes..."
+
+# Create 20 Powers
+puts "Creating powers..."
+
+20.times do
+    # name and description
+    name = Faker::Superhero.power
+    description = Faker::Lorem.paragraph_by_chars(number: 25)
+    Power.create(name: name, description: description)
+end
+
+puts "Done creating powers..."
+
+# Create 30 HeroPowers
+puts "Creating hero powers..."
+
+30.times do
+    arr = ["Strong", "Weak", "Average"]
+
+    # strength, power_id, and hero_id
+    strength = arr.sample
+    power_id = rand(1..20)
+    hero_id = rand(1..10)
+    HeroPower.create(strength: strength, power_id: power_id, hero_id: hero_id)
+end
+
+puts "Done creating hero powers..."

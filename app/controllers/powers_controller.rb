@@ -1,28 +1,40 @@
 class PowersController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
-        
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :validation_errors
+    #  GET /powers
     def index
-        powers = Power.all 
-        render json: powers, status: :created 
+        powers = Power.all
+        render json: powers, status: :ok
     end
-    def show 
-        power = Power.find(params[:id])
-        render json: power,  status: :accepted
+
+    # GET /powers/:id
+    def show
+        power = find_power
+        render json: power, status: :ok
     end
-    def update 
-        power = Power.find(params[:id])
+
+    # PATCH /powers/:id
+    def update
+        power  = find_power
         power.update!(power_params)
-        render json: { message: 'Power updated successfully', power: power.as_json(only: [:id, :name, :description]) }, status: :created
+        render json: power, status: 201
     end
+
     private
-    def record_not_found 
-        render json: {error: "power not found"}, status: :not_found
+
+    def find_power
+        Power.find(params[:id])
     end
-    def invalid_record(invalid)
-        render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity
-    end
-        def power_params
+
+    def power_params
         params.permit(:description)
+    end
+
+    def not_found_response
+        render json: { error:  "Power not found" }, status: 404
+    end
+
+    def validation_errors(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 end
